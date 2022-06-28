@@ -24,5 +24,14 @@ RSpec.describe "integration" do
       my_lib.add(track4)
       expect( my_lib.search("hello") ).to eq [track1, track3]
     end
+
+    it "returns an empty list when there are no matches" do
+        my_lib = MusicLibrary.new
+        track1 = Track.new("title", "artist")
+        track2 = Track.new("title", "artist")
+        my_lib.add(track1)
+        my_lib.add(track2)
+        expect( my_lib.search("hello") ).to eq []
+    end
   end
 end
